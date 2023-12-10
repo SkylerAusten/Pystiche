@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>PyLie Challenges</title>
+        <style>
+            body {
+                background-color: #272822; /* Monokai background color */
+                color: #f8f8f2; /* Light text color for readability */
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 20px;
+            }
+            h1 {
+                color: #66d9ef; /* Monokai-themed title color */
+            }
+            .challenge-list {
+                list-style-type: none;
+                padding: 0;
+            }
+            .challenge-list li {
+                margin-bottom: 10px;
+            }
+            .challenge-button {
+                display: inline-block;
+                color: #f8f8f2; /* Light text color */
+                padding: 10px 15px;
+                text-decoration: none;
+                border-radius: 4px;
+                transition: background-color 0.3s, transform 0.2s;
+            }
+            .complete {
+                background-color: #66d9ef; /* Lighter Monokai blue */
+                color: #272822;
+            }
+            .wip {
+                background-color: #dc3545; /* Red button color */
+            }
+            .complete:hover {
+                background-color: #569cd6; /* Slightly darker Monokai blue on hover */
+            }
+            .wip:hover {
+                background-color: #c82333; /* Darker red on hover */
+            }
+            .challenge-button:active {
+                transform: translateY(1px); /* Push down */
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Less shadow */
+            }
+        </style>
+
+        <!-- Favicon import-->
+        <link rel="shortcut icon"
+            href="{{ url_for('static', filename='favicon.ico') }}">
+    </head>
+    <body>
+        <h1>🐍 PyLie Challenges 🐍</h1>
+        <h2>Easy</h2>
+        <ul class="challenge-list">
+            <li><a class="challenge-button complete"
+                    href="/challenge/arithmetic">Arithmetic</a></li>
+            <li><a class="challenge-button complete" href="/challenge/strings">Strings</a></li>
+            <li><a class="challenge-button complete"
+                    href="/challenge/conditionals">Conditionals</a></li>
+            <li><a class="challenge-button complete" href="/challenge/loops">Loops</a></li>
+        </ul>
+        <h2>Medium</h2>
+        <ul class="challenge-list">
+            <li><a class="challenge-button wip"
+                    href="/challenge/function_calls">Function Calls</a></li>
+            <li><a class="challenge-button wip" href="/challenge/fields">Fields</a></li>
+            <li><a class="challenge-button complete"
+                    href="/challenge/eval_order">Eval
+                    Order</a></li>
+        </ul>
+        <h2>Hard</h2>
+        <ul class="challenge-list">
+            <li><a class="challenge-button wip"
+                    href="/challenge/variable_mutation">Variable Mutation</a></li>
+            <li><a class="challenge-button wip"
+                    href="/challenge/object_mutation">Object Mutation</a></li>
+            <li><a class="challenge-button wip" href="/challenge/scope">Scope</a></li>
+            <li><a class="challenge-button wip" href="/challenge/eval">Eval</a></li>
+        </ul>
+    </body>
+</html>

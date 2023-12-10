@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>PyLie - {{challenge_name.title().replace('_', ' ')}}</title>
+        <!-- Include CodeMirror CSS -->
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.0/codemirror.min.css">
+
+        <!-- Monokai theme CSS for CodeMirror -->
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.0/theme/monokai.min.css">
+
+        <!-- Favicon import-->
+        <link rel="shortcut icon"
+            href="{{ url_for('static', filename='favicon.ico') }}">
+
+        <style>
+        body {
+            background-color: #272822;
+            color: #f8f8f2;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #66d9ef;
+        }
+        #code-container, #output-container {
+            margin-bottom: 20px;
+        }
+        .output {
+            border: 1px solid #66d9ef;
+            background-color: #3e3d32;
+            padding: 10px;
+            min-height: 150px;
+            {% if outputs == 4: %}
+            min-width: 22%;
+            max-width: 22%;
+            {% elif outputs == 3: %}
+            min-width: 30%;
+            max-width: 30%;
+            {% else: %}
+            min-width: 45%;
+            max-width: 45%;
+            {% endif %}
+            color: #f8f8f2;
+        }
+        pre {
+            overflow-wrap: break-word;
+            word-wrap: break-word;
+            white-space: pre-wrap;
+        }
+        .input {
+            border: 1px solid #66d9ef;
+            background-color: #3e3d32;
+            padding: 10px;
+            min-height: 100px;
+            min-width: 30%;
+            overflow-wrap: break-word;
+            color: #f8f8f2;
+        }
+        #output-container {
+            display: flex;
+            justify-content: space-around;
+        }
+        #execute {
+            background-color: #66d9ef;
+            color: #272822;
+            border: none;
+            padding: 10px 20px;
+            text-transform: uppercase;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        #execute:hover {
+            background-color: #569cd6;
+        }
+    </style>
+    </head>
+    <body>
+        <h1 id="title">🐍 {{challenge_name.title().replace('_', ' ')}} 🐍</h1>
+        <div id="code-container" class="input">
+            <form id="codeForm">
+                <textarea id="codeInput" name="code"></textarea><br>
+                <input type="submit" id="execute"
+                    value="Execute"
+                    style="margin-top: 10px;">
+            </form>
+        </div>
+        <div id="output-container">
+            <div id="output1" class="output"><strong class="output-label">
+                    Output 1:</strong> </div>
+            {% if outputs >= 2: %}
+            <div id="output2" class="output"><strong class="output-label">
+                    Output 2:</strong> </div>
+            {% endif %}
+            {% if outputs >= 3: %}
+            <div id="output3" class="output"><strong class="output-label">
+                    Output 3:</strong> </div>
+            {% endif %}
+            {% if outputs == 4: %}
+            <div id="output4" class="output"><strong class="output-label">
+                    Output 4:</strong> </div>
+            {% endif %}
+        </div>
+
+        {% if challenge_name == "loops": %}
+        <h3>Hint: use range()!</h3>
+        {% endif %}
+
+        <!-- Include CodeMirror JavaScript and Python mode -->
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.0/codemirror.min.js"></script>
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.0/mode/python/python.min.js"></script>
+        <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+        <script>
+
+        // Initialize CodeMirror on the codeInput textarea
+        var editor = CodeMirror.fromTextArea(document.getElementById('codeInput'), {
+            lineNumbers: true,
+            mode: "python",
+            theme: "monokai"
+        });
+    </script>
+    </body>
+</html>
